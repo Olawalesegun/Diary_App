@@ -10,12 +10,12 @@ public class DiaryRepositoryImpl implements DiaryRepository{
 
     @Override
     public Diary save(Diary diary) {
-        Diary foundUser = findBy(diary.getUserName());
-        if(foundUser != null){
+   /*     Diary foundUser = findBy(diary.getDiaryName());
+        if(foundUser != null){*/
             diaries.add(diary);
-            return diary;
-        }
-      return null;
+          return diary;
+//        }
+//      return null;*/
     }
 
     @Override
@@ -30,7 +30,12 @@ public class DiaryRepositoryImpl implements DiaryRepository{
 
     @Override
     public void delete(String diaryName) {
-
+        Diary findDiary = findBy(diaryName);
+        for(Diary diary: diaries){
+            if(diary.getDiaryName().equals(findDiary.getDiaryName())){
+                diaries.remove(diary);
+            }
+        }
     }
 
     @Override
