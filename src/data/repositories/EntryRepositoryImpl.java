@@ -6,15 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EntryRepositoryImpl implements EntryRepository{
-    private List<Entry> entries = new ArrayList<>();
+    private final List<Entry> entries = new ArrayList<>();
     @Override
     public Entry save(Entry entry) {
-        Entry entry1 = findBy(entry.getEntryTitle());
-        if(entry1 != null){
-            entries.add(entry1);
-            return entry;
+        Entry newEntryFound = findBy(entry.getEntryTitle());
+        if(newEntryFound != null){
+            update(entry, newEntryFound);
         }
-        return null;
+        else{
+            entries.add(entry);
+        }
+        return entry;
     }
 
     @Override
@@ -26,24 +28,36 @@ public class EntryRepositoryImpl implements EntryRepository{
         }
         return null;
     }
+    public void update(Entry oldEntry, Entry newEntry){
+        int indexOfEntryFound = entries.indexOf(oldEntry);
+        entries.set(indexOfEntryFound, newEntry);
+    }
 
     @Override
     public Entry findBy(int entryID) {
+        for(Entry entry: entries){
+            if(entry.getEntryId() == entryID){
+                return entry;
+            }
+        }
         return null;
     }
 
     @Override
     public void deleteBy(int entryID) {
-
+       Entry newEntryFound = findBy(entryID);
+       if(newEntryFound != null){
+           entries.remove(newEntryFound);
+       }
     }
 
     @Override
     public void deleteBy(Entry entry) {
-
+        deleteBy(entry.getEntryId());
     }
 
     @Override
     public long count() {
-        return 0;
+        return entries.size();
     }
 }
