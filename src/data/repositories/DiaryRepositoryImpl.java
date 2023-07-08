@@ -10,12 +10,14 @@ public class DiaryRepositoryImpl implements DiaryRepository{
 
     @Override
     public Diary save(Diary diary) {
-   /*     Diary foundUser = findBy(diary.getDiaryName());
-        if(foundUser != null){*/
+        Diary foundUser = findBy(diary.getDiaryName());
+        if(foundUser != null){
+            update(diary, foundUser);
+        }
+        else{
             diaries.add(diary);
-          return diary;
-//        }
-//      return null;*/
+        }
+        return diary;
     }
 
     @Override
@@ -31,13 +33,13 @@ public class DiaryRepositoryImpl implements DiaryRepository{
     @Override
     public void delete(String diaryName) {
         Diary findDiary = findBy(diaryName);
-        for(Diary diary: diaries){
-            if(diary.getDiaryName().equals(findDiary.getDiaryName())){
-                diaries.remove(diary);
-            }
-        }
+        diaries.remove(findDiary);
     }
 
+    public void update(Diary diaryName, Diary newDiaryName){
+        int indexOfDiary = diaries.indexOf(diaryName);
+        diaries.set(indexOfDiary, newDiaryName);
+    }
     @Override
     public void delete(Diary diary) {
 
