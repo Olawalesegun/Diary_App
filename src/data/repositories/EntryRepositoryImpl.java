@@ -18,7 +18,6 @@ public class EntryRepositoryImpl implements EntryRepository{
         }
         return entry;
     }
-
     @Override
     public Entry findBy(String entryTitle) {
         for(Entry entry: entries){
@@ -32,7 +31,6 @@ public class EntryRepositoryImpl implements EntryRepository{
         int indexOfEntryFound = entries.indexOf(oldEntry);
         entries.set(indexOfEntryFound, newEntry);
     }
-
     @Override
     public Entry findBy(int entryID) {
         for(Entry entry: entries){
@@ -42,7 +40,6 @@ public class EntryRepositoryImpl implements EntryRepository{
         }
         return null;
     }
-
     @Override
     public void deleteBy(int entryID) {
        Entry newEntryFound = findBy(entryID);
@@ -50,12 +47,10 @@ public class EntryRepositoryImpl implements EntryRepository{
            entries.remove(newEntryFound);
        }
     }
-
     @Override
     public void deleteBy(Entry entry) {
         deleteBy(entry.getEntryId());
     }
-
     @Override
     public long count() {
         return entries.size();
