@@ -1,19 +1,29 @@
 package data.repositories;
 
+import data.models.Diary;
 import data.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository{
-    private List<User> users = new ArrayList();
+    private final List<User> users = new ArrayList();
     @Override
     public User save(User user) {
-        for(User user1: users){
+        users.add(user);
+       /* User foundUser = findBy(user.getUserName());
+        if(foundUser != null){
+            update(diary, foundUser);
+        }
+        else{
+            diaries.add(diary);
+        }*/
+
+       /* for(User user1: users){
             users.add(user);
             return user;
-        }
-        return null;
+        }*/
+        return user;
     }
 
     @Override
