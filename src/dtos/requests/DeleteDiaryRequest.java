@@ -1,2 +1,6 @@
-package dtos.requests;public class DeleteEntryRequest {
+package dtos.requests;
+
+public class DeleteDiaryRequest {
+    private String userName;
+    private String diaryName;
 }
