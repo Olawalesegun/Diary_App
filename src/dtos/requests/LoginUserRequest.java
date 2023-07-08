@@ -1,6 +1,6 @@
 package dtos.requests;
 
-public class loginUserRequest {
+public class LoginUserRequest {
     private String UserName;
     private String password;
 
