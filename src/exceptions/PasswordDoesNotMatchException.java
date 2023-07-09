@@ -1,7 +1,7 @@
 package exceptions;
 
-public class PasswordDoesNotExistException extends RuntimeException{
-    public PasswordDoesNotExistException(String message){
+public class PasswordDoesNotMatchException extends RuntimeException{
+    public PasswordDoesNotMatchException(String message){
         super(message);
     }
 }
