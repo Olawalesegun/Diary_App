@@ -1,2 +1,7 @@
-package exceptions;public class UserDoesNotExistException {
+package exceptions;
+
+public class UserDoesNotExistException extends RuntimeException{
+    public UserDoesNotExistException(String message){
+        super(message);
+    }
 }
