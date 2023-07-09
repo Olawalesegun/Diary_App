@@ -4,6 +4,16 @@ public class ChangePasswordRequest {
     private String oldPassword;
     private String newPassword;
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    private String userName;
+
     public String getOldPassword() {
         return oldPassword;
     }
