@@ -1,2 +1,4 @@
-package services;public interface EntryService {
+package services;
+
+public interface EntryService {
 }
