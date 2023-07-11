@@ -76,8 +76,13 @@ class DiaryRepositoryImplTest {
         diaryRepo.delete("Darda_Diary");
         assertEquals(1, diaryRepo.count());
     }
-   /* @Test
-    public void whenIDeleteTwo(){
-
-    }*/
+    //I should come back to this one below
+   @Test
+    public void whenIFindDiary_TheDiaryIsReturned(){
+        Diary diary1 = new Diary();
+        diary1.setDiaryName("Dai Diary");
+        diary1.setUserName("Fela");
+        diaryRepo.save(diary1);
+        assertSame(diary1, diaryRepo.findBy("Fela"));
+    }
 }
