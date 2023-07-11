@@ -1,6 +1,8 @@
 package services;
 
 import dtos.requests.CreateDiaryRequest;
+import dtos.requests.DeleteDiaryRequest;
+import dtos.responses.DeleteDiaryResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -37,12 +39,25 @@ class DiaryServiceImplementationTest {
         assertEquals(2, diaryService.count());
     }
     @Test
-    public void whenICreateDiaryResponse_DiaryIsSuccessfulTest(){
+    public void whenICreate_DiaryResponseIsSuccessfulTest(){
         CreateDiaryRequest createDiaryRequest = new CreateDiaryRequest();
         createDiaryRequest.setUserName("Bombo");
         createDiaryRequest.setDiaryName("DiaryWako");
         diaryService.createDiary(createDiaryRequest);
         String response ;
+    }
+    @Test
+    public void whenIDeleteDiary(){
+        DeleteDiaryRequest deleteDiaryRequest = new DeleteDiaryRequest();
+        deleteDiaryRequest.setDiaryName("Dembe Diary");
+        deleteDiaryRequest.setUserName("Dembele");
+        DeleteDiaryResponse diaryResponse = diaryService.deleteDiary(deleteDiaryRequest);
+        String response = """
+                =======================================
+                      Diary is deleted successfully
+                =======================================
+                """;
+        assertEquals(response, diaryResponse);
     }
 
 }
