@@ -6,10 +6,11 @@ import dtos.responses.*;
 public interface DiaryService {
 
     CreateDiaryResponse createDiary(CreateDiaryRequest createDiaryRequest);
-    DeleteDiaryResponse deleteDiary(DeleteDiaryResponse deleteDiaryResponse);
+    DeleteDiaryResponse deleteDiary(DeleteDiaryRequest deleteDiaryRequest);
     CreateEntryResponse createEntry(CreateDiaryRequest createDiaryRequest);
     UpdateEntryResponse updateEntry(UpdateEntryRequest updateEntryRequest);
-    DeleteDiaryResponse deleteEntry(DeleteDiaryRequest deleteDiaryRequest);
+    DeleteEntryResponse deleteEntry(DeleteEntryRequest deleteEntryRequest);
+
     FindEntryResponse findEntry(FindEntryRequest findDiaryRequest);
     FindDiaryResponse findDiary(FindDiaryRequest findDiaryRequest);
     long count();
