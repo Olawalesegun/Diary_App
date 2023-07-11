@@ -1,2 +1,7 @@
-package exceptions;public class DiaryDoesNotExist {
+package exceptions;
+
+public class DiaryDoesNotExist extends RuntimeException{
+    public DiaryDoesNotExist(String message){
+        super(message);
+    }
 }
