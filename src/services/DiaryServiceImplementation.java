@@ -5,27 +5,47 @@ import data.repositories.DiaryRepository;
 import data.repositories.DiaryRepositoryImpl;
 import dtos.requests.*;
 import dtos.responses.*;
+import exceptions.DiaryDoesNotExist;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class DiaryServiceImplementation implements DiaryService{
     DiaryRepository diaryRepository = new DiaryRepositoryImpl();
     @Override
     public CreateDiaryResponse createDiary(CreateDiaryRequest createDiaryRequest) {
         Diary diary = new Diary();
-        diary.setUserName(createDiaryRequest.getUserName());
-        diary.setDiaryName(createDiaryRequest.getDiaryName());
-        diaryRepository.save(diary);
+        map(diary, createDiaryRequest);
         CreateDiaryResponse createDiaryResponse = new CreateDiaryResponse();
-        createDiaryResponse.setDiaryName(createDiaryRequest.getDiaryName());
-        createDiaryResponse.setDateEntered(createDiaryRequest.getTimeEntered());
-        createDiaryResponse.setTimeEntered();
+        LocalDateTime dateAndTime = diary.getDateAndTimeForDiaryCreation();
+        String date = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm:ss").format(dateAndTime);
+        map(diary, createDiaryResponse, date);
+        ///
+        //String date = diary.getDateAndTimeForDiaryCreation();
         return createDiaryResponse;
     }
 
     @Override
-    public DeleteDiaryResponse deleteDiary(DeleteDiaryResponse deleteDiaryResponse) {
-        return null;
+    public DeleteDiaryResponse deleteDiary(DeleteDiaryRequest deleteDiaryRequest) {
+        /*Diary diary1 = diaryRepository.findBy(deleteDiaryRequest.getDiaryName());
+        if(diary1.getDiaryName() == null){
+            throw new DiaryDoesNotExist("This diary does not exist");
+        }else{
+
+        }*/
+        DeleteDiaryResponse deleteDiaryResponse = new DeleteDiaryResponse();
+        return deleteDiaryResponse;
     }
 
+    public void map(Diary diary, CreateDiaryRequest createDiaryRequest){
+        diary.setUserName(createDiaryRequest.getUserName());
+        diary.setDiaryName(createDiaryRequest.getDiaryName());
+        diaryRepository.save(diary);
+    }
+    public void map(Diary diary, CreateDiaryResponse createDiaryResponse, String DateAndTime){
+        createDiaryResponse.setDiaryName(diary.getDiaryName());
+        createDiaryResponse.setDateAndTimeEntered(DateAndTime);
+    }
     @Override
     public CreateEntryResponse createEntry(CreateDiaryRequest createDiaryRequest) {
         return null;
@@ -37,7 +57,7 @@ public class DiaryServiceImplementation implements DiaryService{
     }
 
     @Override
-    public DeleteDiaryResponse deleteEntry(DeleteDiaryRequest deleteDiaryRequest) {
+    public DeleteEntryResponse deleteEntry(DeleteEntryRequest deleteEntryRequest) {
         return null;
     }
 
@@ -49,6 +69,17 @@ public class DiaryServiceImplementation implements DiaryService{
 
     @Override
     public FindDiaryResponse findDiary(FindDiaryRequest findDiaryRequest) {
+        findDiaryRequest.getDiaryName();
+        Diary diaryFound = diaryRepository.findBy(findDiaryRequest.getDiaryName());
+        if(diaryFound == null){
+            throw new DiaryDoesNotExist("This diary does not exist");
+        }else{
+            if(diaryFound.getDiaryName() == findDiaryRequest.getDiaryName() &&
+            diaryFound.getUserName() == findDiaryRequest.getUserName()){
+                diaryRepository.delete(diaryFound.getDiaryName());
+            }
+        }
+
         /*diaryRepository.findBy(findDiaryRequest)*/
         return null;
     }
