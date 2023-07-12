@@ -78,6 +78,16 @@ public class UserServiceImplementation implements UserService{
     }
 
     @Override
+    public DeleteDiaryResponse deleteDiary(DeleteDiaryRequest deleteDiaryRequest) {
+        return null;
+    }
+
+    @Override
+    public FindDiaryResponse findDiary(FindDiaryRequest findDiaryRequest) {
+        return null;
+    }
+
+    @Override
     public CreateEntryResponse createEntry(CreateEntryRequest createEntryRequest) {
         return null;
     }
