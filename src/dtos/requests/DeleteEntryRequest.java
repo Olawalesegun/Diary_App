@@ -1,2 +1,4 @@
-package dtos.requests;public class DeleteEntryRequest {
+package dtos.requests;
+
+public class DeleteEntryRequest {
 }
