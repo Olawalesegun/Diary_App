@@ -13,6 +13,8 @@ public interface UserService {
 
     boolean isLoggedIn(String userName);
     CreateDiaryResponse createDiary(CreateDiaryRequest createDiaryRequest);
+    DeleteDiaryResponse deleteDiary(DeleteDiaryRequest deleteDiaryRequest);
+    FindDiaryResponse findDiary(FindDiaryRequest findDiaryRequest);
     CreateEntryResponse createEntry(CreateEntryRequest createEntryRequest);
     DeleteDiaryResponse deleteEntry(DeleteDiaryRequest deleteEntryRequest);
     long count();
