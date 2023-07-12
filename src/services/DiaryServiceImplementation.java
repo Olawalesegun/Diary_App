@@ -34,6 +34,7 @@ public class DiaryServiceImplementation implements DiaryService{
 
         }*/
         DeleteDiaryResponse deleteDiaryResponse = new DeleteDiaryResponse();
+        //deleteDiaryResponse.
         return deleteDiaryResponse;
     }
 
@@ -69,16 +70,27 @@ public class DiaryServiceImplementation implements DiaryService{
 
     @Override
     public FindDiaryResponse findDiary(FindDiaryRequest findDiaryRequest) {
-        findDiaryRequest.getDiaryName();
+        Diary returnedDiaryAfterFinding = diaryRepository.findBy(findDiaryRequest.getDiaryName());
+        if(returnedDiaryAfterFinding == null){
+            throw new DiaryDoesNotExist("This diary does not exist");
+        }else{
+          if(returnedDiaryAfterFinding.getDiaryName() == findDiaryRequest.getDiaryName()&&
+          returnedDiaryAfterFinding.getUserName() == findDiaryRequest.getUserName()){
+              FindDiaryResponse findDiaryResponse = new FindDiaryResponse();
+              return findDiaryResponse;
+          }
+        }
+
+        /* findDiaryRequest.getDiaryName();
         Diary diaryFound = diaryRepository.findBy(findDiaryRequest.getDiaryName());
         if(diaryFound == null){
             throw new DiaryDoesNotExist("This diary does not exist");
         }else{
             if(diaryFound.getDiaryName() == findDiaryRequest.getDiaryName() &&
             diaryFound.getUserName() == findDiaryRequest.getUserName()){
-                diaryRepository.delete(diaryFound.getDiaryName());
+                diaryRepository.delete();
             }
-        }
+        }*/
 
         /*diaryRepository.findBy(findDiaryRequest)*/
         return null;
