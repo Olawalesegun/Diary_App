@@ -1,4 +1,5 @@
 package dtos.responses;
 
-public class loginUserResponse {
+public class LoginUserResponse {
+
 }
