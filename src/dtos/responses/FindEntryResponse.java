@@ -1,2 +1,4 @@
-package dtos.responses;public class FindEntryResponse {
+package dtos.responses;
+
+public class FindEntryResponse {
 }
