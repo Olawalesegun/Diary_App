@@ -1,2 +1,5 @@
-package dtos.responses;public class CreateEntryResponse {
+package dtos.responses;
+
+public class CreateEntryResponse {
+
 }
