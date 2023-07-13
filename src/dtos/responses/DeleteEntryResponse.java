@@ -1,2 +1,4 @@
-package dtos.responses;public class DeleteEntryResponse {
+package dtos.responses;
+
+public class DeleteEntryResponse {
 }
