@@ -1,5 +1,5 @@
 package dtos.responses;
 
-public class DeleteEntryResponse {
-    private String
+public class DeleteDiaryResponse {
+
 }
