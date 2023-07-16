@@ -1,2 +1,4 @@
-package dtos.responses;public class UpdateEntryResponse {
+package dtos.responses;
+
+public class UpdateEntryResponse {
 }
