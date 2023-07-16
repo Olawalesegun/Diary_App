@@ -6,8 +6,6 @@ public class Diary {
     private String userName;
     private String diaryName;
     private final LocalDateTime dateAndTimeForDiaryCreation = LocalDateTime.now();
-
-
     public String getUserName() {
         return userName;
     }
@@ -17,7 +15,6 @@ public class Diary {
     public String getDiaryName() {
         return diaryName;
     }
-
     public void setDiaryName(String diaryName) {
         this.diaryName = diaryName;
     }
