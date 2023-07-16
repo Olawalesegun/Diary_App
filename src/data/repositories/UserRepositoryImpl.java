@@ -10,7 +10,12 @@ public class UserRepositoryImpl implements UserRepository{
     private final List<User> users = new ArrayList();
     @Override
     public User save(User user) {
-        users.add(user);
+        if(user != null){
+            users.add(user);
+            return user;
+        }
+        return null;
+        //users.add(user);
        /* User foundUser = findBy(user.getUserName());
         if(foundUser != null){
             update(diary, foundUser);
@@ -23,7 +28,6 @@ public class UserRepositoryImpl implements UserRepository{
             users.add(user);
             return user;
         }*/
-        return user;
     }
 
     @Override
